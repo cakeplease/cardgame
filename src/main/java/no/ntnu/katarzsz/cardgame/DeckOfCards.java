@@ -1,7 +1,6 @@
 package no.ntnu.katarzsz.cardgame;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -74,27 +73,5 @@ public class DeckOfCards {
         this.handOfCards = new HandOfCards(handOfCards);
         this.resetDeck();
         return handOfCards;
-    }
-
-    public static void main(String[] args) throws Exception {
-        DeckOfCards deckOfCards = new DeckOfCards();
-        ArrayList<PlayingCard> deck = deckOfCards.getCardDeck();
-
-        System.out.println("Before dealing cards");
-        for (PlayingCard card : deck) {
-            System.out.println(card.getAsString());
-        }
-
-        System.out.println("Hand of cards:");
-        ArrayList<PlayingCard> handOfCards = deckOfCards.dealHand(5);
-
-        for (PlayingCard card : handOfCards) {
-            System.out.println(card.getAsString());
-        }
-
-        System.out.println("Card deck after dealing hand of cards:");
-        for (PlayingCard card : deck) {
-            System.out.println(card.getAsString());
-        }
     }
 }

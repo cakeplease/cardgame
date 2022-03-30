@@ -9,10 +9,10 @@ public class HandOfCards {
     private ArrayList<PlayingCard> handOfCards;
 
     public HandOfCards(ArrayList<PlayingCard> handOfCards) throws Exception {
-        if (!handOfCards.isEmpty()) {
+        if (!handOfCards.isEmpty() && handOfCards.size() >= 5) {
             this.handOfCards = handOfCards;
         } else {
-            throw new Exception("Empty hand of cards");
+            throw new Exception("Empty hand of cards or too few cards. A hand of cards must consist of minimum 5 cards.");
         }
     }
 
