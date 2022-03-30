@@ -8,7 +8,7 @@ public class ViewController {
 
     public static ArrayList<PlayingCard> dealHand() throws Exception {
         DeckOfCards deck = DeckOfCards.getInstance();
-        return deck.dealHand(5);
+        return deck.dealHand(10);
     }
 
     public static int checkSumOfFaces() throws Exception {
@@ -30,7 +30,15 @@ public class ViewController {
         return handOfCards.getHearts();
     }
 
-    /*public static boolean checkForQueenOfSpades() {
+    public static boolean checkForQueenOfSpades() throws Exception {
+        DeckOfCards deck = DeckOfCards.getInstance();
+        HandOfCards handOfCards = deck.getHandOfCards();
+        return handOfCards.checkForQueenOfSpades();
+    }
 
-    }*/
+    public static boolean isFlush() throws Exception {
+        DeckOfCards deck = DeckOfCards.getInstance();
+        HandOfCards handOfCards = deck.getHandOfCards();
+        return handOfCards.isFlush();
+    }
 }

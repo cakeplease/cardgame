@@ -30,17 +30,42 @@ public class HandOfCards {
 
     public List<PlayingCard> getHearts() throws Exception {
         if (!handOfCards.isEmpty()) {
-            return this.handOfCards.stream().filter(c -> String.valueOf(c.getSuit()).equals("H")).collect(Collectors.toList());
+            return this.handOfCards.stream().filter(c -> c.getSuit()=='H').collect(Collectors.toList());
         } else {
             throw new Exception("Empty hand of cards");
         }
     }
 
-    /*public boolean checkForQueenOfSpades() throws Exception {
+    public boolean checkForQueenOfSpades() throws Exception {
         if (!handOfCards.isEmpty()) {
-            List queenOfSpades = this.handOfCards.stream().filter(c -> String.valueOf(c.getSuit()).equals("H")).collect(Collectors.toList());
+            List queenOfSpades = this.handOfCards.stream().filter(c -> c.getSuit()=='S' && c.getFace()==12).collect(Collectors.toList());
+            if (!queenOfSpades.isEmpty()) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            throw new Exception("Empty hand of cards");
+
         }
-    }*/
+    }
+
+    public boolean isFlush() throws Exception {
+        if (!handOfCards.isEmpty()) {
+            List flushSpades = this.handOfCards.stream().filter(c -> c.getSuit()=='S').collect(Collectors.toList());
+            List flushHearts = this.handOfCards.stream().filter(c -> c.getSuit()=='H').collect(Collectors.toList());
+            List flushDiamonds = this.handOfCards.stream().filter(c -> c.getSuit()=='D').collect(Collectors.toList());
+            List flushClubs = this.handOfCards.stream().filter(c -> c.getSuit()=='C').collect(Collectors.toList());
+
+            if (flushSpades.size() == 5 || flushHearts.size() == 5 || flushDiamonds.size() == 5 || flushClubs.size() == 5) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            throw new Exception("Empty hand of cards");
+        }
+    }
 
     @Override
     public String toString() {
