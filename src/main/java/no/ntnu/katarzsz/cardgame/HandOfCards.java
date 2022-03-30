@@ -2,6 +2,7 @@ package no.ntnu.katarzsz.cardgame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class HandOfCards {
@@ -65,6 +66,19 @@ public class HandOfCards {
         } else {
             throw new Exception("Empty hand of cards");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HandOfCards that = (HandOfCards) o;
+        return Objects.equals(handOfCards, that.handOfCards);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(handOfCards);
     }
 
     @Override

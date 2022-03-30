@@ -1,13 +1,14 @@
 package no.ntnu.katarzsz.cardgame;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 /**
  * Represents a full deck of cards which consists of 52 cards.
  */
 public class DeckOfCards {
-
     private final char[] suit = { 'S', 'H', 'D', 'C' };
     private ArrayList<PlayingCard> cardDeck = new ArrayList<PlayingCard>(51);
     private HandOfCards handOfCards;
@@ -49,7 +50,7 @@ public class DeckOfCards {
 
     public boolean isValidIndex(ArrayList<PlayingCard> deckOfCards, int index) {
         try {
-            PlayingCard card = deckOfCards.get(index);
+            deckOfCards.get(index);
         } catch (IndexOutOfBoundsException e) {
             return false;
         }
@@ -73,5 +74,29 @@ public class DeckOfCards {
         this.handOfCards = new HandOfCards(handOfCards);
         this.resetDeck();
         return handOfCards;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DeckOfCards that = (DeckOfCards) o;
+        return Arrays.equals(suit, that.suit) && Objects.equals(cardDeck, that.cardDeck) && Objects.equals(handOfCards, that.handOfCards);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(cardDeck, handOfCards);
+        result = 31 * result + Arrays.hashCode(suit);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "DeckOfCards{" +
+                "suit=" + Arrays.toString(suit) +
+                ", cardDeck=" + cardDeck +
+                ", handOfCards=" + handOfCards +
+                '}';
     }
 }
